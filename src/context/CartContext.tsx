@@ -12,6 +12,7 @@ interface CartContextType {
   removeFromCart: (productId: any) => Promise<any>;
   clearCart: () => Promise<any>;
   refreshCart: () => Promise<void>;
+  fetchCartCount:() => Promise<void>;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -197,7 +198,8 @@ export const CartProvider = ({ children }) => {
     updateCartItem,
     removeFromCart,
     clearCart,
-    refreshCart
+    refreshCart,
+    fetchCartCount
   };
 
   return (

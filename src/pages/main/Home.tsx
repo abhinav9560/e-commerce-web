@@ -26,7 +26,7 @@ import { useNavigate } from "react-router-dom";
 const HomePage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { cartCount, addToCart } = useCart();
+  const { cartCount, addToCart, fetchCartCount } = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
@@ -121,7 +121,7 @@ const HomePage = () => {
       try {
         setLoading(true);
         setError("");
-
+        fetchCartCount();
         // Fetch featured products
         const productsResponse = await productAPI.getFeaturedProducts();
         if (productsResponse.success) {

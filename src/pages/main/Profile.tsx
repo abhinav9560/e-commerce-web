@@ -683,7 +683,7 @@ const ProfilePage = () => {
                       ) : (
                         <div className="flex items-center space-x-2">
                           <Phone className="w-4 h-4 text-gray-400" />
-                          <p className="text-gray-900">{profileData.phone}</p>
+                          <p className="text-gray-900">{profileData.phone||"-"}</p>
                         </div>
                       )}
                     </div>
@@ -707,31 +707,12 @@ const ProfilePage = () => {
                       ) : (
                         <div className="flex items-center space-x-2">
                           <MapPin className="w-4 h-4 text-gray-400" />
-                          <p className="text-gray-900">{profileData.address}</p>
+                          <p className="text-gray-900">
+                            {profileData.address || "-"}
+                          </p>
                         </div>
                       )}
                     </div>
-                  </div>
-
-                  <div className="mt-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Bio
-                    </label>
-                    {isEditing ? (
-                      <textarea
-                        value={profileData.bio}
-                        onChange={(e) =>
-                          setProfileData({
-                            ...profileData,
-                            bio: e.target.value,
-                          })
-                        }
-                        rows={3}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-                      />
-                    ) : (
-                      <p className="text-gray-700">{profileData.bio}</p>
-                    )}
                   </div>
                 </div>
 
